@@ -1,8 +1,8 @@
 mod chatgpt;
 
 use anyhow::Context as _;
-use chat_gpt::get_gpt_response;
-use chat_gpt::RequestMessage;
+use chatgpt::get_gpt_response;
+use chatgpt::RequestMessage;
 use regex::Regex;
 use serenity::async_trait;
 use serenity::model::channel::Message;
