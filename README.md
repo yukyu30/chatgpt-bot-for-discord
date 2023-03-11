@@ -55,9 +55,14 @@ CHATGPT_TOKEN="xxxxxxx"
     cargo shuttle login --api-key <your_api_key>
     ```
 4. プロジェクト作成を行います
+    
+    `Cargo.toml`の`name`の項目を**任意の文字列に書き換えます。**
+    shuttleで既に使われているnameと重複した場合、`a project with the same name already exists`と表示されます。
+    https://github.com/yukyu30/chatgpt-bot-for-discord/blob/83ca21adbd79033e1449efca26f0b49265ef8c71/Cargo.toml#L1-L2
     ```bash
     cargo shuttle project new
     ```
+    
 ### 🤖 開発環境での実行
 ```
 cargo shuttle run
