@@ -13,15 +13,8 @@ struct Choice {
 }
 
 #[derive(Deserialize, Debug)]
-struct Usage {
-    prompt_tokens: usize,
-    completion_tokens: usize,
-    total_tokens: usize,
-}
-
-#[derive(Deserialize, Debug)]
 struct ResponseMessage {
-    role: String,
+    _role: String,
     content: String,
 }
 
