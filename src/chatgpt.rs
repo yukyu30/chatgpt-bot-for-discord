@@ -14,7 +14,7 @@ struct Choice {
 
 #[derive(Deserialize, Debug)]
 struct ResponseMessage {
-    _role: String,
+    role: String,
     content: String,
 }
 
@@ -26,8 +26,8 @@ struct ChatRequest<'a> {
 
 #[derive(Serialize, Clone, Debug)]
 pub struct RequestMessage<'a> {
-    pub(crate) role: &'a str,
-    pub(crate) content: String,
+    pub role: &'a str,
+    pub content: String,
 }
 
 pub async fn get_gpt_response(
