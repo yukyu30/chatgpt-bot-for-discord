@@ -21,9 +21,11 @@ fn is_user(author: &User) -> bool {
     return !author.bot;
 }
 
-fn is_bot_mention(message: &Message) -> bool {
-    const BOT_NAME: &str = "juiz";
-    return message.mentions.iter().any(|user| user.name == BOT_NAME);
+fn is_inclued_bot_mention(ctx: &Context, message: &Message) -> bool {
+    return message
+        .mentions
+        .iter()
+        .any(|user| user.id == ctx.cache.current_user_id());
 }
 
 fn build_json(messages: Vec<Message>) -> Vec<RequestMessage<'static>> {
@@ -46,9 +48,7 @@ fn build_json(messages: Vec<Message>) -> Vec<RequestMessage<'static>> {
 #[async_trait]
 impl EventHandler for Bot {
     async fn message(&self, ctx: Context, message: Message) {
-        //ユーザーが@juizへメンションした場合に飲み反応する
-
-        if is_bot_mention(&message) && is_user(&message.author) {
+        if is_inclued_bot_mention(&ctx, &message) && is_user(&message.author) {
             let channel_id = message.channel_id;
             let messages = match channel_id.messages(&ctx.http, |m| m.limit(100)).await {
                 Ok(messages) => messages,
@@ -80,6 +80,11 @@ impl EventHandler for Bot {
     async fn ready(&self, _: Context, ready: Ready) {
         println!("Logged in as {}", ready.user.name);
     }
+
+    #[cfg(feature = "cache")]
+    async fn cache_ready(&self, _ctx: Context, _guilds: Vec<GuildId>) {
+        println!("cache ready");
+    }
 }
 
 #[shuttle_service::main]
@@ -91,8 +96,8 @@ async fn serenity(
         .get("DISCORD_TOKEN")
         .context("'DISCORD_TOKEN' was not found")?;
     let gpt_token = secret_store
-        .get("CHAT_GPT_TOKEN")
-        .context("'CHAT_GPT_TOKEN' was not found")?;
+        .get("CHATGPT_TOKEN")
+        .context("'CHATGPT_TOKEN' was not found")?;
 
     let client = get_client(&discord_token, &gpt_token).await;
 
