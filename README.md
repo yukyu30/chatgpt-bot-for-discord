@@ -73,7 +73,18 @@ cargo shuttle run
 ```
 cargo shuttle deploy
 ```
+以下のような表示がされたらデプロイ成功です👏
+```
+Service Name:  <project name>
+Deployment ID:  xxxxxxxxx-1234-6789-1234-xxxxxxxxxx
+Status:        running
+Last Updated:  2023-03-11T10:08:18Z
+URI:           https://<project name>.shuttleapp.rs
+```
 
+### 備考
+#### Botがオフラインになっている
+shuttleのドキュメントにそのような記載が見当たらないため推測ですが、一定期間`https://<project name>.shuttleapp.rs`へのアクセスがないと、Botがオフラインになってしまうみたいです。
 ---
 ### 参考
 [shuttle Docs](https://docs.shuttle.rs/introduction/welcome)
