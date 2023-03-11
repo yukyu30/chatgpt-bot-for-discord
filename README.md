@@ -69,9 +69,10 @@ cargo shuttle run
 ```
 
 ### 🚀 デプロイ
+デフォルトでは30分アクセスがないとスリープモードになるため、`--idle-minutes 0`のオプションをつけます
 
 ```
-cargo shuttle deploy
+cargo shuttle deploy --idle-minutes 0
 ```
 以下のような表示がされたらデプロイ成功です👏
 ```
@@ -79,12 +80,13 @@ Service Name:  <project name>
 Deployment ID:  xxxxxxxxx-1234-6789-1234-xxxxxxxxxx
 Status:        running
 Last Updated:  2023-03-11T10:08:18Z
-URI:           https://<project name>.shuttleapp.rs
+URI:           <app_url>
 ```
 
-### 備考
-#### Botがオフラインになっている
-shuttleのドキュメントにそのような記載が見当たらないため推測ですが、一定期間`https://<project name>.shuttleapp.rs`へのアクセスがないと、Botがオフラインになってしまうみたいです。
+### Botを止める
+```
+cargo shuttle stop
+```
 ---
 ### 参考
 [shuttle Docs](https://docs.shuttle.rs/introduction/welcome)
