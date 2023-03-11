@@ -10,7 +10,7 @@
 
 ```
 DISCORD_TOKEN="xxxxxxx"
-CHAT_GPT_TOKEN="xxxxxxx"
+CHATGPT_TOKEN="xxxxxxx"
 ```
 
 ### OpenAIのAPIキー取得方法
