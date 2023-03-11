@@ -1,6 +1,15 @@
 ## ChatGPT を利用した Discord Bot
 
-### 設定
+### 必要なトークン、API Keyの取得
+このボットの実行には以下のトークンが必要です.
+- Discord botのToken
+- OpenAIのAPIキー
+
+#### 
+
+#### OpenAIのAPIキー取得方法
+[OpenAI API keys](https://platform.openai.com/account/api-keys)へアクセスして`Create new secret key`をクリックしてAPIキー発行します。
+[Usage limits](https://platform.openai.com/account/billing/limits)で使用量の上限を設定しておくことを推奨します。
 
 `Secrets.toml`にトークンをセットしてください。
 
