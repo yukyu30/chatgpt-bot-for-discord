@@ -5,7 +5,6 @@ use chatgpt::get_gpt_response;
 use chatgpt::RequestMessage;
 use regex::Regex;
 use serenity::async_trait;
-use serenity::http;
 use serenity::model::channel::Message;
 use serenity::model::gateway::Ready;
 use serenity::model::user::User;
@@ -79,7 +78,6 @@ impl EventHandler for Bot {
                 .mention(&message.author)
                 .push(&gpt_message)
                 .build();
-            typing.stop();
             if let Err(why) = message.channel_id.say(&ctx.http, &response).await {
                 println!("Error sending message: {:?}", why);
             }
