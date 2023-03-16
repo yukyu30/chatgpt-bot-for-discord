@@ -5,6 +5,7 @@ use chatgpt::get_gpt_response;
 use chatgpt::RequestMessage;
 use regex::Regex;
 use serenity::async_trait;
+
 use serenity::model::channel::Message;
 use serenity::model::gateway::Ready;
 use serenity::model::user::User;
@@ -59,7 +60,7 @@ impl EventHandler for Bot {
             };
 
             let requset_bogy: Vec<RequestMessage> = build_json(messages);
-            let typing = match message.channel_id.start_typing(&ctx.http) {
+            let _typing = match message.channel_id.start_typing(&ctx.http) {
                 Ok(typing) => typing,
                 Err(e) => {
                     println!("Error: {}", e);
