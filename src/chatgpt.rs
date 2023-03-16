@@ -21,7 +21,7 @@ struct ResponseMessage {
 #[derive(Serialize)]
 struct ChatRequest<'a> {
     model: &'a str,
-    messages: &'a Vec<RequestMessage<'a>>,
+    messages: Vec<RequestMessage<'a>>,
 }
 
 #[derive(Serialize, Clone, Debug)]
@@ -31,15 +31,15 @@ pub struct RequestMessage<'a> {
 }
 
 pub async fn get_gpt_response(
-    messages: &Vec<RequestMessage<'_>>,
+    messages: Vec<RequestMessage<'_>>,
     gpt_token: &str,
     client: &reqwest::Client,
 ) -> Result<String, Error> {
     const URL: &str = "https://api.openai.com/v1/chat/completions";
-    const MODEL: &str = "gpt-3.5-turbo";
+    const GPT_MODEL: &str = "gpt-3.5-turbo";
 
     let request_body = ChatRequest {
-        model: MODEL,
+        model: GPT_MODEL,
         messages,
     };
 
