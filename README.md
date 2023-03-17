@@ -1,4 +1,5 @@
 # ChatGPT を利用した Discord Bot
+[技術記事](https://zenn.dev/yu_9/articles/737aca68c7fcd8)書きました
 
 ## 必要なトークン、API Keyの取得
 
