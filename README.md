@@ -60,8 +60,10 @@ CHATGPT_TOKEN="xxxxxxx"
     `Cargo.toml`の`name`の項目を**任意の文字列に書き換えます。**
     shuttleで既に使われているnameと重複した場合、`a project with the same name already exists`と表示されます。
     https://github.com/yukyu30/chatgpt-bot-for-discord/blob/83ca21adbd79033e1449efca26f0b49265ef8c71/Cargo.toml#L1-L2
+    
+    デフォルトでは30分アクセスがないとスリープモードになるため、`--idle-minutes 0`のオプションをつけます
     ```bash
-    cargo shuttle project new
+    cargo shuttle project new  --idle-minutes 0
     ```
     
 ### 🤖 開発環境での実行
@@ -70,10 +72,10 @@ cargo shuttle run
 ```
 
 ### 🚀 デプロイ
-デフォルトでは30分アクセスがないとスリープモードになるため、`--idle-minutes 0`のオプションをつけます
+
 
 ```
-cargo shuttle deploy --idle-minutes 0
+cargo shuttle deploy
 ```
 以下のような表示がされたらデプロイ成功です👏
 ```
