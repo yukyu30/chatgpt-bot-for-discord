@@ -95,10 +95,10 @@ impl EventHandler for Bot {
     }
 }
 
-#[shuttle_service::main]
+#[shuttle_runtime::main]
 async fn serenity(
     #[shuttle_secrets::Secrets] secret_store: SecretStore,
-) -> shuttle_service::ShuttleSerenity {
+) -> shuttle_serenity::ShuttleSerenity {
     // Secrets.tomlからトークンを取得する
     let discord_token = secret_store
         .get("DISCORD_TOKEN")
@@ -109,7 +109,7 @@ async fn serenity(
 
     let client = get_client(&discord_token, &gpt_token).await;
 
-    Ok(client)
+    Ok(client.into())
 }
 
 pub async fn get_client(discord_token: &str, gpt_token: &str) -> serenity::Client {
